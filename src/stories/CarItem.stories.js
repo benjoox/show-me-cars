@@ -1,7 +1,7 @@
 import React from 'react'
-import '../../custom.scss'
+import '../custom.scss'
 
-import CarItem from '.'
+import CarItem from '../components/CarItem'
 
 export default {
     component: CarItem,
