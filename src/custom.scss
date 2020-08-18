@@ -13,3 +13,16 @@ code {
 }
 
 @import '~bootstrap/scss/bootstrap.scss';
+
+// TODO : Either use emotion for hover effect
+// or move the inline styling into scss
+
+.btn-link:focus {
+    outline: 0;
+    text-decoration: none;
+}
+
+.btn-link:hover {
+    text-decoration: underline;
+    color: #d37324;
+}
