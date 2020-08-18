@@ -3,7 +3,7 @@
 import React from 'react'
 import { Card } from 'react-bootstrap'
 
-type Props = {
+export type CarItemType = {
     modelName: string,
     stockNumber: number,
     mileage: Object,

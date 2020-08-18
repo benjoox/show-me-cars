@@ -1,20 +1,12 @@
 // @flow
 
 import React from 'react'
-import CarItem from '../CarItem'
+import CarItem, { CarItemType } from '../CarItem'
 
-type CarItemType = {
-    modelName: string,
-    stockNumber: number,
-    mileage: Object,
-    pictureUrl: string,
-    color: string,
-    fuelType: string,
-}
-
-type Props = {
+export type CarItemListType = {
     list: CarItemType[],
 }
+
 export default class CarItemList extends React.PureComponent<Props> {
     render() {
         return (
