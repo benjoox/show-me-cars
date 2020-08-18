@@ -46,7 +46,7 @@ export default function FiltersContainer(props: Props) {
     useEffect(() => {
         getColors()
         getManufacturer()
-    }, [props])
+    }, [])
 
     function handleFilter(ev) {
         ev.preventDefault()
@@ -67,7 +67,6 @@ export default function FiltersContainer(props: Props) {
                         <Filter
                             label="Color"
                             itemList={colors}
-                            // eslint-disable-next-line no-console
                             select={(k) => selectColor(k.target.value)}
                             selected={selectedColor}
                         />
@@ -82,8 +81,6 @@ export default function FiltersContainer(props: Props) {
                             <Col sm={{ span: 6, offset: 6 }}>
                                 <Button
                                     style={{ width: '100%' }}
-                                    primary
-                                    // eslint-disable-next-line no-console
                                     onClick={handleFilter}
                                 >
                                     Filter

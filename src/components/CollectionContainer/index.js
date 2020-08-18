@@ -54,10 +54,6 @@ export default function CollectionContainer() {
     const currentPage = () => cars.length % 10
     const displayCount = () => cars.length
 
-    if (loading) {
-        return <div>....loading</div>
-    }
-
     return (
         <Container>
             <Row>
@@ -72,7 +68,11 @@ export default function CollectionContainer() {
                         {`Showing ${displayCount()} out of ${totalCarsCount}`}
                     </h3>
 
-                    {cars.length > 0 ? <CarItemList list={cars} /> : ''}
+                    {!loading && cars.length > 0 ? (
+                        <CarItemList list={cars} />
+                    ) : (
+                        <div>....loading</div>
+                    )}
 
                     <Pagination
                         currentPage={currentPage()}

@@ -22,6 +22,7 @@ export default class CarItemList extends React.PureComponent<Props> {
                     } = car
                     return (
                         <CarItem
+                            key={stockNumber}
                             modelName={modelName}
                             stockNumber={stockNumber}
                             mileage={mileage}
