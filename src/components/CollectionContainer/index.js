@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import CarItemList from '../CarItemList'
 import Pagination from '../Pagination'
+import FiltersContainer from '../FilterContainer'
 
 const header2 = {
     marginBottom: '12px',
@@ -20,23 +21,35 @@ export default function CollectionContainer() {
     const [totalCarsCount, setTotalCarsCount] = useState([])
     const [loading, setLoading] = useState(false)
 
+    async function getAllCars(params = '') {
+        setLoading(true)
+        const response = await fetch(`${API_ENDPOINT}${params}`)
+        const data = await response.json()
+        setCars(data.cars)
+        setTotalPageCount(data.totalPageCount)
+        setTotalCarsCount(data.totalCarsCount)
+        setLoading(false)
+    }
+
     useEffect(() => {
-        async function getAllCars() {
-            setLoading(true)
-            const response = await fetch(API_ENDPOINT)
-            const data = await response.json()
-            setCars(data.cars)
-            setTotalPageCount(data.totalPageCount)
-            setTotalCarsCount(data.totalCarsCount)
-            setLoading(false)
-        }
         getAllCars()
     }, [])
 
-    function first() {}
-    function previous() {}
-    function next() {}
-    function last() {}
+    function constructURL({ manufacturer, color, page }) {
+        let urlParams = '?'
+        if (manufacturer) {
+            urlParams += `manufacturer=${manufacturer}&`
+        }
+        if (color) {
+            urlParams += `color=${color}&`
+        }
+        if (page) {
+            urlParams += `page=${page}`
+        } else {
+            urlParams += `page=${1}`
+        }
+        return urlParams === '?' ? '' : urlParams
+    }
 
     const currentPage = () => cars.length % 10
     const displayCount = () => cars.length
@@ -48,7 +61,11 @@ export default function CollectionContainer() {
     return (
         <Container>
             <Row>
-                <Col sm={4}>Filter placeholder</Col>
+                <Col sm={4}>
+                    <FiltersContainer
+                        filter={(params) => getAllCars(constructURL(params))}
+                    />
+                </Col>
                 <Col sm={8}>
                     <h2 style={header2}>Available cars</h2>
                     <h3 style={header3}>
@@ -60,10 +77,12 @@ export default function CollectionContainer() {
                     <Pagination
                         currentPage={currentPage()}
                         pagesCount={totalPageCount}
-                        first={first}
-                        previous={previous}
-                        next={next}
-                        last={last}
+                        first={() => getAllCars(constructURL({ page: 1 }))}
+                        previous={() => getAllCars(constructURL({ page: 1 }))}
+                        next={() => getAllCars(constructURL({ page: 1 }))}
+                        last={() =>
+                            getAllCars(constructURL({ page: totalPageCount }))
+                        }
                     />
                 </Col>
             </Row>
