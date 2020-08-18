@@ -1,19 +1,16 @@
 // @flow
 
 import React from 'react'
-import { Container, Row } from 'react-bootstrap'
 import Header from './components/Header'
+import Footer from './components/Footer'
 
 function App() {
     return (
         <div>
-            <Row
-                style={{ marginBottom: '24px', borderBottom: 'solid 1px grey' }}
-            >
-                <Container>
-                    <Header />
-                </Container>
-            </Row>
+            <div style={{ height: '90vh' }}>
+                <Header />
+            </div>
+            <Footer />
         </div>
     )
 }
