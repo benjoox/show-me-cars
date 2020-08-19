@@ -31,7 +31,7 @@ export default function Header() {
                 <Container>
                     <Navbar collapseOnSelect style={navbar}>
                         <Navbar.Brand>
-                            <Link to="/home">
+                            <Link to="/">
                                 <img src={logo} style={image} alt="logo" />
                             </Link>
                         </Navbar.Brand>
@@ -39,13 +39,13 @@ export default function Header() {
                         <section style={links}>
                             <Navbar.Collapse id="responsive-navbar-nav">
                                 <Nav>
-                                    <Nav.Link href="#purchase">
+                                    <Nav.Link href="/purchase">
                                         Purchase
                                     </Nav.Link>
-                                    <Nav.Link href="#orders">
+                                    <Nav.Link href="/orders">
                                         My Orders
                                     </Nav.Link>
-                                    <Nav.Link href="#deets">Sell</Nav.Link>
+                                    <Nav.Link href="/sell">Sell</Nav.Link>
                                 </Nav>
                             </Navbar.Collapse>
                         </section>

@@ -18,7 +18,7 @@ export default class Footer extends PureComponent<Props> {
         return (
             <footer style={root}>
                 <Row className="justify-content-md-center">
-                    <p style={trademark}>AUTO1 Group 2018</p>
+                    <p style={trademark}>&copy; AUTO1 Group 2018</p>
                 </Row>
             </footer>
         )
