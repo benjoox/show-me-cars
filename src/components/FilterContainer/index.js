@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react'
 import { Row, Container, Form, Col, Button } from 'react-bootstrap'
 import Filter from './Filter'
-import FirstLetterUpperCase from './_utils'
+import FirstLetterUpperCase from '../_utils'
 
 const API_ENDPOINT = 'https://auto1-mock-server.herokuapp.com/api'
 

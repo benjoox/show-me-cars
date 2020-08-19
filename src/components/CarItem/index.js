@@ -3,6 +3,7 @@
 import React from 'react'
 import { Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import FirstLetterUpperCase from '../_utils'
 
 export type CarItemType = {
     modelName: string,
@@ -42,6 +43,11 @@ const link = {
     fontSize: '14px',
 }
 
+const body = {
+    padding: '0px 12px',
+    margin: '0',
+}
+
 export default class CarItem extends React.PureComponent<Props> {
     render() {
         const {
@@ -55,21 +61,22 @@ export default class CarItem extends React.PureComponent<Props> {
         return (
             <Card style={root}>
                 <Card.Img variant="top" src={pictureUrl} style={image} />
-                <Card.Body style={{ padding: '0px 12px', margin: '0' }}>
+                <Card.Body style={body}>
                     <Card.Title style={title}>
                         <h2 style={header}>{modelName}</h2>
                     </Card.Title>
                     <Card.Text style={text}>
-                        <span>Stock #{stockNumber} - </span>
-                        <span>
-                            {mileage.number} {mileage.unit} -{' '}
-                        </span>
-                        <span>{fuelType} - </span>
-                        <span>{color}</span>
+                        <span>Stock # {stockNumber}</span>
+                        <span> - </span>
+                        <span>{mileage.number}</span>
+                        <span>{mileage.unit.toUpperCase()}</span>
+                        <span> - </span>
+                        <span>{fuelType}</span>
+                        <span> - </span>
+                        <span>{FirstLetterUpperCase(color)}</span>
                     </Card.Text>
                     <Link to={`/details/${stockNumber}`} style={link}>
-                        {' '}
-                        Details
+                        View Details
                     </Link>
                 </Card.Body>
             </Card>
