@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import CarItemList from '../CarItemList'
+import LoadingItem from '../CarItemList/LoadingList'
 import Pagination from '../Pagination'
 import FiltersContainer from '../FilterContainer'
 
@@ -67,11 +68,10 @@ export default function CollectionContainer() {
                     <h3 style={header3}>
                         {`Showing ${displayCount()} out of ${totalCarsCount}`}
                     </h3>
-
-                    {!loading && cars.length > 0 ? (
-                        <CarItemList list={cars} />
+                    {loading ? (
+                        <LoadingItem />
                     ) : (
-                        <div>....loading</div>
+                        <CarItemList list={cars} loading={loading} />
                     )}
 
                     <Pagination

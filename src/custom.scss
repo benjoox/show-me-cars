@@ -27,3 +27,28 @@ code {
     text-decoration: underline;
     color: #d37324;
 }
+
+.loadingList {
+    width: 100%;
+    top: 20px;
+    height: 110px;
+
+    background-image: linear-gradient(lightgray 80px, transparent 0),
+        linear-gradient(
+            100deg,
+            rgba(255, 255, 255, 0),
+            rgba(255, 255, 255, 0.5) 50%,
+            rgba(255, 255, 255, 0) 80%
+        ),
+        linear-gradient(lightgray 30px, transparent 0),
+        linear-gradient(lightgray 20px, transparent 0),
+        linear-gradient(lightgray 20px, transparent 0);
+
+    background-repeat: repeat-y;
+
+    background-size: 100px 200px, 50px 200px, /* highlight */ 250px 200px,
+        250px 200px, 100px 200px;
+
+    background-position: 12px 12px, 0 0, /* highlight */ 132px 12px, 132px 48px,
+        132px 72px;
+}
