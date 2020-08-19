@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { Card } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 export type CarItemType = {
     modelName: string,
@@ -66,9 +67,10 @@ export default class CarItem extends React.PureComponent<Props> {
                         <span>{fuelType} - </span>
                         <span>{color}</span>
                     </Card.Text>
-                    <a href={`http://localhost/${stockNumber}`} style={link}>
-                        Go somewhere
-                    </a>
+                    <Link to={`/details/${stockNumber}`} style={link}>
+                        {' '}
+                        Details
+                    </Link>
                 </Card.Body>
             </Card>
         )

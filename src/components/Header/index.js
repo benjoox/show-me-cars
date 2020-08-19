@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { Container, Navbar, Nav, Row } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 import logo from '../../logo.png'
 
 const root = {
@@ -29,8 +30,10 @@ export default function Header() {
             <Row style={root}>
                 <Container>
                     <Navbar collapseOnSelect style={navbar}>
-                        <Navbar.Brand href="#home">
-                            <img src={logo} style={image} alt="logo" />
+                        <Navbar.Brand>
+                            <Link to="/home">
+                                <img src={logo} style={image} alt="logo" />
+                            </Link>
                         </Navbar.Brand>
                         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                         <section style={links}>
