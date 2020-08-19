@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { Container, Row, Col, Button } from 'react-bootstrap'
+import { Container, Row, Col } from 'react-bootstrap'
+import SaveFavBox from './SaveFavBox'
 
 const API_ENDPOINT = 'https://auto1-mock-server.herokuapp.com/api/cars'
 
@@ -22,16 +23,10 @@ const description = {
     padding: '12px 12px 12px 0',
 }
 
-const saveBox = {
-    padding: '24px',
-    border: 'solid 1px #ededed',
-    display: 'flex',
-    flexDirection: 'column',
-}
-
 export default function DetailsContainer() {
     const [car, setCar] = useState(null)
     const { slug } = useParams()
+
     useEffect(() => {
         async function getDetails() {
             const response = await fetch(`${API_ENDPOINT}/${slug}`)
@@ -43,9 +38,6 @@ export default function DetailsContainer() {
 
     if (!car) return ''
 
-    function save() {
-        // TODO : implemenet saving the car in the localstorage
-    }
     const { modelName, stockNumber, mileage, pictureUrl, color, fuelType } = car
 
     return (
@@ -77,21 +69,7 @@ export default function DetailsContainer() {
                             and may change due to bad weather conditions.
                         </p>
                     </Col>
-                    <Col sm={{ span: 4 }}>
-                        <div style={saveBox}>
-                            <p>
-                                If you like this car, click the button and save
-                                it to your favourite items.
-                            </p>
-                            <Button
-                                style={{ alignSelf: 'flex-end' }}
-                                type="button"
-                                onClick={save}
-                            >
-                                Save
-                            </Button>
-                        </div>
-                    </Col>
+                    <SaveFavBox stockNumber={stockNumber} />
                 </Row>
             </Container>
         </Container>
