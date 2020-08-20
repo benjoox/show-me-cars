@@ -26,8 +26,8 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 * React testing library + jest
 * Storybook for some initial components
 
-#### Consideration
-This project is using react bootstrap components. According to the provided instructions "\ Use available components only and ignore missmatching of original design"\ I tried to stick to the available components. Hence the select list that is used is the one provided in bootstrap and I did not add the custom design provided. If this is a deal breaker please let me know and I can create the select component seperately. 
+#### Considerations
+This project is using react bootstrap components. According to the provided instructions "Use available components only and ignore missmatching of original design" I tried to stick to the available components. Hence the select list that is used, is the one provided in bootstrap and I did not add the custom design provided by your team. If this is a deal breaker please let me know and I can create the select component seperately. 
 
 Also with the styling of the components, the override.scss does override bootstrap default theming and color palettes. Any custom styling that is specific to an individual component is done as inline styles in the component.
 
