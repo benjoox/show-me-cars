@@ -7,6 +7,7 @@ import logo from '../../logo.png'
 
 const root = {
     marginBottom: '24px',
+    padding: '0 12px',
     borderBottom: 'solid 1px #ededed',
 }
 
@@ -17,18 +18,22 @@ const navbar = {
 }
 
 const image = {
-    width: '200px',
+    width: '150px',
 }
 
 const links = {
     alignSelf: 'left',
+}
+const navLink = {
+    fontSize: '14px',
+    color: '#4a4a4a',
 }
 
 export default function Header() {
     return (
         <header>
             <Row style={root}>
-                <Container>
+                <Container fluid>
                     <Navbar collapseOnSelect style={navbar}>
                         <Navbar.Brand>
                             <Link to="/">
@@ -39,13 +44,15 @@ export default function Header() {
                         <section style={links}>
                             <Navbar.Collapse id="responsive-navbar-nav">
                                 <Nav>
-                                    <Nav.Link href="/purchase">
+                                    <Nav.Link href="/purchase" style={navLink}>
                                         Purchase
                                     </Nav.Link>
-                                    <Nav.Link href="/orders">
+                                    <Nav.Link href="/orders" style={navLink}>
                                         My Orders
                                     </Nav.Link>
-                                    <Nav.Link href="/sell">Sell</Nav.Link>
+                                    <Nav.Link href="/sell" style={navLink}>
+                                        Sell
+                                    </Nav.Link>
                                 </Nav>
                             </Navbar.Collapse>
                         </section>

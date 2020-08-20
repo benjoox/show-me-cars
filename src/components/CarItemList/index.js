@@ -7,10 +7,14 @@ export type CarItemListType = {
     list: CarItemType[],
 }
 
+const root = {
+    marginTop: '24px',
+}
+
 export default class CarItemList extends React.PureComponent<Props> {
     render() {
         return (
-            <div>
+            <div style={root}>
                 {this.props.list.map((car: CarItemType) => {
                     const {
                         modelName,

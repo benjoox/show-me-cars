@@ -17,16 +17,16 @@ export type CarItemType = {
 const root = {
     padding: '12px',
     flexDirection: 'row',
-    marginBottom: '24px',
+    marginBottom: '12px',
 }
 
 const image = {
-    width: '86px',
-    height: '76px',
+    width: '85px',
+    height: '66px',
 }
 
-const title = {
-    margin: '0 0 12px 0',
+const cardTitle = {
+    margin: '0 0 8px 0',
 }
 
 const header = {
@@ -35,17 +35,12 @@ const header = {
 }
 
 const text = {
-    fontSize: '14px',
-    margin: '0 0 12px 0',
+    fontSize: '12px',
+    lineHeight: '1',
 }
 
-const link = {
-    fontSize: '14px',
-}
-
-const body = {
-    padding: '0px 12px',
-    margin: '0',
+const cardBody = {
+    padding: '0px 24px',
 }
 
 export default class CarItem extends React.PureComponent<Props> {
@@ -60,9 +55,9 @@ export default class CarItem extends React.PureComponent<Props> {
         } = this.props
         return (
             <Card style={root}>
-                <Card.Img variant="top" src={pictureUrl} style={image} />
-                <Card.Body style={body}>
-                    <Card.Title style={title}>
+                <Card.Img src={pictureUrl} style={image} />
+                <Card.Body style={cardBody}>
+                    <Card.Title style={cardTitle}>
                         <h2 style={header}>{modelName}</h2>
                     </Card.Title>
                     <Card.Text style={text}>
@@ -75,9 +70,7 @@ export default class CarItem extends React.PureComponent<Props> {
                         <span> - </span>
                         <span>{FirstLetterUpperCase(color)}</span>
                     </Card.Text>
-                    <Link to={`/details/${stockNumber}`} style={link}>
-                        View Details
-                    </Link>
+                    <Link to={`/details/${stockNumber}`}>View details</Link>
                 </Card.Body>
             </Card>
         )

@@ -1,20 +1,5 @@
-body {
-    height: 100%;
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
-        'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-        'Helvetica Neue', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-        monospace;
-}
-
 @import '~bootstrap/scss/bootstrap.scss';
-
+@import './overrides.scss';
 // TODO : Either use emotion for hover effect
 // or move the inline styling into scss
 
@@ -30,25 +15,23 @@ code {
 
 .loadingList {
     width: 100%;
-    top: 20px;
-    height: 110px;
+    height: 90px;
 
-    background-image: linear-gradient(lightgray 80px, transparent 0),
+    background-image: linear-gradient(lightgray 65px, transparent 0),
         linear-gradient(
             100deg,
             rgba(255, 255, 255, 0),
             rgba(255, 255, 255, 0.5) 50%,
             rgba(255, 255, 255, 0) 80%
         ),
-        linear-gradient(lightgray 30px, transparent 0),
-        linear-gradient(lightgray 20px, transparent 0),
-        linear-gradient(lightgray 20px, transparent 0);
+        linear-gradient(lightgray 23px, transparent 0),
+        linear-gradient(lightgray 15px, transparent 0),
+        linear-gradient(lightgray 15px, transparent 0);
 
     background-repeat: repeat-y;
 
-    background-size: 100px 200px, 50px 200px, /* highlight */ 250px 200px,
-        250px 200px, 100px 200px;
+    background-size: 86px 200px, 50px 200px, 218px 200px, 218px 200px,
+        65px 200px;
 
-    background-position: 12px 12px, 0 0, /* highlight */ 132px 12px, 132px 48px,
-        132px 72px;
+    background-position: 12px 12px, 0 0, 118px 12px, 118px 40px, 118px 60px;
 }

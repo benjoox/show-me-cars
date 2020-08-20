@@ -4,23 +4,33 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { Container, Row, Col } from 'react-bootstrap'
 import SaveFavBox from './SaveFavBox'
+import FirstLetterUpperCase from '../_utils'
 
 const API_ENDPOINT = 'https://auto1-mock-server.herokuapp.com/api/cars'
 
 const content = {
     marginTop: '24px',
-}
-
-const header1 = {
-    marginBottom: '12px',
+    padding: '0 24px',
+    maxWidth: '800px',
 }
 
 const specs = {
-    margin: '12px 0',
+    marginTop: '24px',
+    marginBottom: '12px',
 }
 
 const description = {
-    padding: '12px 12px 12px 0',
+    padding: '12px  0',
+}
+
+const imageContainer = {
+    height: '322px',
+    backgroundColor: '#ededed',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: '-24px',
 }
 
 export default function DetailsContainer() {
@@ -41,26 +51,23 @@ export default function DetailsContainer() {
     const { modelName, stockNumber, mileage, pictureUrl, color, fuelType } = car
 
     return (
-        <Container fluid>
-            <Row className="justify-content-md-center">
-                <Col
-                    className="justify-content-md-center"
-                    style={{ flexGrow: 0 }}
-                >
-                    <img src={pictureUrl} alt="" />
-                </Col>
-            </Row>
+        <Container fluid style={{ padding: 0 }}>
+            <div style={imageContainer}>
+                <img src={pictureUrl} alt="" />
+            </div>
             <Container style={content}>
                 <Row>
-                    <Col sm={{ span: 5, offset: 1 }}>
-                        <h1 style={header1}>{modelName}</h1>
+                    <Col sm={7}>
+                        <h1>{modelName}</h1>
                         <div style={specs}>
-                            <span>Stock #{stockNumber} - </span>
-                            <span>
-                                {mileage.number} {mileage.unit} -{' '}
-                            </span>
-                            <span>{fuelType} - </span>
-                            <span>{color}</span>
+                            <span>Stock # {stockNumber}</span>
+                            <span> - </span>
+                            <span>{mileage.number}</span>
+                            <span>{mileage.unit.toUpperCase()}</span>
+                            <span> - </span>
+                            <span>{fuelType}</span>
+                            <span> - </span>
+                            <span>{FirstLetterUpperCase(color)}</span>
                         </div>
                         <p style={description}>
                             This car is currently available and can be deliverd

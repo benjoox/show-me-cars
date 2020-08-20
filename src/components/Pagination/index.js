@@ -1,11 +1,13 @@
 // @flow
 
 import React from 'react'
-import { Row } from 'react-bootstrap'
+import { Row, Button } from 'react-bootstrap'
 
 const root = {
     display: 'flex',
     justifyContent: 'center',
+    marginBottom: '24px',
+    marginTop: '24px',
 }
 const btn = {
     padding: '0 8px',
@@ -16,6 +18,8 @@ const btn = {
 }
 const text = {
     padding: '0 8px',
+    fontSize: '12px',
+    lineHeight: '1.5',
 }
 
 export type PaginationType = {
@@ -39,46 +43,41 @@ export default class Pagination extends React.PureComponent<PaginationType> {
         } = this.props
         return (
             <Row style={root}>
-                <button
+                <Button
                     type="button"
                     style={btn}
                     onClick={first}
-                    className="btn-link"
+                    variant="secondary"
                 >
-                    {' '}
-                    First{' '}
-                </button>
-                <button
+                    First
+                </Button>
+                <Button
                     type="button"
                     style={btn}
                     onClick={previous}
-                    className="btn-link"
+                    variant="secondary"
                 >
-                    {' '}
-                    Previous{' '}
-                </button>
+                    Previous
+                </Button>
                 <p style={text}>
-                    {' '}
-                    {currentPage} out of {pagesCount}{' '}
+                    Page {currentPage} of {pagesCount}
                 </p>
-                <button
+                <Button
                     type="button"
                     style={btn}
                     onClick={next}
-                    className="btn-link"
+                    variant="secondary"
                 >
-                    {' '}
-                    Next{' '}
-                </button>
-                <button
+                    Next
+                </Button>
+                <Button
                     type="button"
                     style={btn}
                     onClick={last}
-                    className="btn-link"
+                    variant="secondary"
                 >
-                    {' '}
-                    Last{' '}
-                </button>
+                    Last
+                </Button>
             </Row>
         )
     }

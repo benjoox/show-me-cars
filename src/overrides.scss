@@ -1,0 +1,117 @@
+$color-primary: #ea7f28;
+$color-secondary: #d37324;
+$color-dark-grey: #4a4a4a;
+$color-light-grey: #ededed;
+
+body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+        'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+        monospace;
+}
+
+.container-fluid {
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+.col {
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+h1 {
+    color: $color-dark-grey;
+    font-size: 32px;
+    font-weight: bold;
+    margin: 0;
+}
+
+h2 {
+    color: $color-dark-grey;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+h3 {
+    color: $color-dark-grey;
+    font-size: 18px;
+    margin: 0;
+}
+
+h4 {
+    color: $color-dark-grey;
+    font-size: 14px;
+    margin: 0;
+}
+
+h5 {
+    color: $color-dark-grey;
+    font-size: 12px;
+    margin: 0;
+}
+
+p {
+    color: $color-dark-grey;
+    font-size: 14px;
+    margin: 0;
+    line-height: 1.7;
+}
+
+a {
+    color: $color-primary;
+    font-size: 12px;
+}
+
+a:hover {
+    color: $color-secondary;
+}
+
+.btn-primiary:focus {
+    background-color: $color-primary;
+    outline: 0;
+}
+
+.btn-primary {
+    background-color: $color-primary;
+    border-color: $color-primary;
+    width: 128px;
+    height: 32px;
+    font-size: 14px;
+}
+
+.btn-primary:hover {
+    background-color: $color-secondary;
+    border-color: $color-secondary;
+    width: 128px;
+    height: 32px;
+    font-size: 14px;
+}
+
+.btn-secondary {
+    font-size: 12px;
+}
+
+.navbar {
+    padding: 0;
+}
+
+.navlink {
+    padding-left: 12px;
+    padding-right: 12px;
+    font-size: 12px;
+}
+
+.card {
+    border-radius: 0;
+    border-color: $color-light-grey;
+    box-sizing: content-box;
+}

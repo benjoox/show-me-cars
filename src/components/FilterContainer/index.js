@@ -60,7 +60,7 @@ export default function FiltersContainer(props: Props) {
     }
 
     return (
-        <Container style={{ border: 'solid 1px grey', padding: '24px' }}>
+        <Container style={{ border: 'solid 1px #4a4a4a', padding: '24px' }}>
             <Row>
                 <Col>
                     <Form style={{ width: '100%' }}>
@@ -79,12 +79,7 @@ export default function FiltersContainer(props: Props) {
                         />
                         <Row>
                             <Col sm={{ span: 6, offset: 6 }}>
-                                <Button
-                                    style={{ width: '100%' }}
-                                    onClick={handleFilter}
-                                >
-                                    Filter
-                                </Button>
+                                <Button onClick={handleFilter}>Filter</Button>
                             </Col>
                         </Row>
                     </Form>

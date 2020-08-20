@@ -10,6 +10,10 @@ const saveBox = {
     flexDirection: 'column',
 }
 
+const btn = {
+    alignSelf: 'flex-end',
+}
+
 type Props = {
     stockNumber: string,
 }
@@ -52,7 +56,7 @@ export default function DetailsContainer(props: Props) {
     }
 
     return (
-        <Col sm={{ span: 4 }}>
+        <Col sm={{ span: 5 }}>
             {isSaved ? (
                 <div style={saveBox}>
                     <p>
@@ -60,11 +64,7 @@ export default function DetailsContainer(props: Props) {
                         it from your favourite items.
                     </p>
 
-                    <Button
-                        style={{ alignSelf: 'flex-end' }}
-                        type="button"
-                        onClick={remove}
-                    >
+                    <Button style={btn} type="button" onClick={remove}>
                         Remove
                     </Button>
                 </div>
@@ -72,14 +72,10 @@ export default function DetailsContainer(props: Props) {
                 <div style={saveBox}>
                     <p>
                         If you like this car, click the button and save it to
-                        your favourite items.
+                        your collection of favourite items.
                     </p>
 
-                    <Button
-                        style={{ alignSelf: 'flex-end' }}
-                        type="button"
-                        onClick={save}
-                    >
+                    <Button style={btn} type="button" onClick={save}>
                         Save
                     </Button>
                 </div>

@@ -14,7 +14,9 @@ export default function Filter(props: Props) {
     const { label, itemList, select, selected } = props
     return (
         <Form.Group controlId={label}>
-            <Form.Label>{label}</Form.Label>
+            <Form.Label>
+                <h5>{label}</h5>
+            </Form.Label>
             <Form.Control as="select" onChange={select} value={selected}>
                 {itemList.length > 0 &&
                     itemList.map((el: string) => (

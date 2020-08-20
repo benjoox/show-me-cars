@@ -7,14 +7,6 @@ import LoadingItem from '../CarItemList/LoadingList'
 import Pagination from '../Pagination'
 import FiltersContainer from '../FilterContainer'
 
-const header2 = {
-    marginBottom: '12px',
-}
-
-const header3 = {
-    marginBottom: '24px',
-}
-
 const API_ENDPOINT = 'https://auto1-mock-server.herokuapp.com/api/cars'
 export default function CollectionContainer() {
     const [cars, setCars] = useState([])
@@ -56,7 +48,7 @@ export default function CollectionContainer() {
     const displayCount = () => cars.length
 
     return (
-        <Container>
+        <Container fluid>
             <Row>
                 <Col sm={4}>
                     <FiltersContainer
@@ -64,16 +56,16 @@ export default function CollectionContainer() {
                     />
                 </Col>
                 <Col sm={8}>
-                    <h2 style={header2}>Available cars</h2>
-                    <h3 style={header3}>
-                        {`Showing ${displayCount()} out of ${totalCarsCount}`}
+                    <h2>Available cars</h2>
+                    <h3>
+                        {`Showing ${displayCount()} of ${totalCarsCount} results`}
                     </h3>
+
                     {loading ? (
                         <LoadingItem />
                     ) : (
                         <CarItemList list={cars} loading={loading} />
                     )}
-
                     <Pagination
                         currentPage={currentPage()}
                         pagesCount={totalPageCount}
