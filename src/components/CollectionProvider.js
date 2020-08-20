@@ -1,6 +1,8 @@
+/* eslint-disable no-console */
 // @flow
 
 import React, { useState } from 'react'
+import { Redirect } from 'react-router-dom'
 import { FirstLetterUpperCase, ConstructURL } from './_utils'
 
 export const CollectionContext = React.createContext('CollectionContext')
@@ -16,6 +18,7 @@ const DEFAULT_MANUFACTURER = 'All manufacturers'
 
 export default function CollectionProvider(props: Props) {
     const [loading, setLoading] = useState(false)
+    const [error, setError] = useState(false)
     const [cars, setCars] = useState([])
     const [colors, setColor] = useState([])
     const [manufacturers, setManufacturer] = useState([])
@@ -28,29 +31,44 @@ export default function CollectionProvider(props: Props) {
     const [currentPage, setCurrentPage] = useState(1)
 
     async function getCars(params = '') {
-        setLoading(true)
-        const response = await fetch(`${API_ENDPOINT}/cars/${params}`)
-        const data = await response.json()
-        setCars(data.cars)
-        setTotalPageCount(data.totalPageCount)
-        setTotalCarsCount(data.totalCarsCount)
-        setLoading(false)
+        try {
+            setLoading(true)
+            const response = await fetch(`${API_ENDPOINT}/cars/${params}`)
+            const data = await response.json()
+            setCars(data.cars)
+            setTotalPageCount(data.totalPageCount)
+            setTotalCarsCount(data.totalCarsCount)
+            setLoading(false)
+        } catch (err) {
+            console.error(err)
+            setError(true)
+        }
     }
 
     async function getColors() {
-        const response = await fetch(`${API_ENDPOINT}/colors`)
-        const data = await response.json()
-        const colorNames = data.colors.map((el) => FirstLetterUpperCase(el))
-        setColor([DEFAULT_COLOR, ...colorNames])
+        try {
+            const response = await fetch(`${API_ENDPOINT}/colors`)
+            const data = await response.json()
+            const colorNames = data.colors.map((el) => FirstLetterUpperCase(el))
+            setColor([DEFAULT_COLOR, ...colorNames])
+        } catch (err) {
+            console.error(err)
+            setError(true)
+        }
     }
 
     async function getManufacturer() {
-        const response = await fetch(`${API_ENDPOINT}/manufacturers`)
-        const data = await response.json()
-        const manufacturersName = data.manufacturers.map((man) =>
-            FirstLetterUpperCase(man.name)
-        )
-        setManufacturer([DEFAULT_MANUFACTURER, ...manufacturersName])
+        try {
+            const response = await fetch(`${API_ENDPOINT}/manufacturers`)
+            const data = await response.json()
+            const manufacturersName = data.manufacturers.map((man) =>
+                FirstLetterUpperCase(man.name)
+            )
+            setManufacturer([DEFAULT_MANUFACTURER, ...manufacturersName])
+        } catch (err) {
+            console.error(err)
+            setError(true)
+        }
     }
 
     function filter(pageNumber) {
@@ -70,6 +88,10 @@ export default function CollectionProvider(props: Props) {
             // TODO: It would be better to set the page when we recieve the data from server
             setCurrentPage(page)
         }
+    }
+
+    if (error) {
+        return <Redirect to="/notFound" />
     }
 
     const value = {

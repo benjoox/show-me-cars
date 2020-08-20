@@ -1,7 +1,8 @@
+/* eslint-disable no-console */
 // @flow
 
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Redirect } from 'react-router-dom'
 import { Container, Row, Col } from 'react-bootstrap'
 import SaveFavBox from './SaveFavBox'
 import { FirstLetterUpperCase } from '../_utils'
@@ -35,17 +36,26 @@ const imageContainer = {
 
 export default function DetailsContainer() {
     const [car, setCar] = useState(null)
+    const [error, setError] = useState(false)
     const { slug } = useParams()
 
     useEffect(() => {
         async function getDetails() {
-            const response = await fetch(`${API_ENDPOINT}/${slug}`)
-            const data = await response.json()
-            setCar(data.car)
+            try {
+                const response = await fetch(`${API_ENDPOINT}/${slug}`)
+                const data = await response.json()
+                setCar(data.car)
+            } catch (err) {
+                console.error(err)
+                setError(true)
+            }
         }
         getDetails()
     }, [slug])
 
+    if (error) {
+        return <Redirect to="/notFound" />
+    }
     if (!car) return ''
 
     const { modelName, stockNumber, mileage, pictureUrl, color, fuelType } = car
