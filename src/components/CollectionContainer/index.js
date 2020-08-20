@@ -15,10 +15,11 @@ export default function CollectionContainer() {
         totalPageCount,
         totalCarsCount,
         getCars,
-        filter,
     } = useContext(CollectionContext)
 
-    useEffect(() => getCars(), [])
+    useEffect(() => {
+        getCars()
+    }, [])
 
     if (!cars || cars.length < 1) return ''
 
@@ -45,10 +46,6 @@ export default function CollectionContainer() {
                     <Pagination
                         currentPage={currentPage()}
                         pagesCount={totalPageCount}
-                        first={() => filter({ page: 1 })}
-                        previous={() => filter({ page: 1 })}
-                        next={() => filter({ page: 1 })}
-                        last={() => filter({ page: totalPageCount })}
                     />
                 </Col>
             </Row>

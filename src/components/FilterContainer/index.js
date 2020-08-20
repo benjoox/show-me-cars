@@ -22,7 +22,7 @@ export default function FiltersContainer() {
         manufacturers,
         selectColor,
         selectManufacturer,
-        handleFilter,
+        filter,
         getColors,
         getManufacturer,
         selectedColor,
@@ -33,6 +33,12 @@ export default function FiltersContainer() {
         getColors()
         getManufacturer()
     }, [])
+
+    function handleClick(ev) {
+        ev.preventDefault()
+        // Reset to page 1 when the filters button is clicked
+        filter(1)
+    }
 
     return (
         <Container style={container}>
@@ -53,7 +59,7 @@ export default function FiltersContainer() {
                             selected={selectedManufacturer}
                         />
                         <div style={btn}>
-                            <Button onClick={handleFilter}>Filter</Button>
+                            <Button onClick={handleClick}>Filter</Button>
                         </div>
                     </Form>
                 </Col>

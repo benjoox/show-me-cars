@@ -1,7 +1,8 @@
 // @flow
 
-import React from 'react'
+import React, { useContext } from 'react'
 import { Row, Button } from 'react-bootstrap'
+import { CollectionContext } from '../CollectionProvider'
 
 const root = {
     display: 'flex',
@@ -14,7 +15,6 @@ const btn = {
     border: 'none',
     background: 'none',
     height: '14px',
-    color: '#ea7f28',
 }
 const text = {
     padding: '0 8px',
@@ -22,63 +22,48 @@ const text = {
     lineHeight: '1.5',
 }
 
-export type PaginationType = {
-    currentPage: number,
-    pagesCount: number,
-    first: (event: SyntheticEvent<HTMLButtonElement>) => void,
-    previous: (event: SyntheticEvent<HTMLButtonElement>) => void,
-    next: (event: SyntheticEvent<HTMLButtonElement>) => void,
-    last: (event: SyntheticEvent<HTMLButtonElement>) => void,
-}
+export default function Pagination() {
+    const { currentPage, totalPageCount, filter } = useContext(
+        CollectionContext
+    )
 
-export default class Pagination extends React.PureComponent<PaginationType> {
-    render() {
-        const {
-            currentPage,
-            pagesCount,
-            first,
-            previous,
-            next,
-            last,
-        } = this.props
-        return (
-            <Row style={root}>
-                <Button
-                    type="button"
-                    style={btn}
-                    onClick={first}
-                    variant="secondary"
-                >
-                    First
-                </Button>
-                <Button
-                    type="button"
-                    style={btn}
-                    onClick={previous}
-                    variant="secondary"
-                >
-                    Previous
-                </Button>
-                <p style={text}>
-                    Page {currentPage} of {pagesCount}
-                </p>
-                <Button
-                    type="button"
-                    style={btn}
-                    onClick={next}
-                    variant="secondary"
-                >
-                    Next
-                </Button>
-                <Button
-                    type="button"
-                    style={btn}
-                    onClick={last}
-                    variant="secondary"
-                >
-                    Last
-                </Button>
-            </Row>
-        )
-    }
+    return (
+        <Row style={root}>
+            <Button
+                type="button"
+                style={btn}
+                onClick={() => filter(1)}
+                variant="secondary"
+            >
+                First
+            </Button>
+            <Button
+                type="button"
+                style={btn}
+                onClick={() => filter(currentPage - 1)}
+                variant="secondary"
+            >
+                Previous
+            </Button>
+            <p style={text}>
+                Page {currentPage} of {totalPageCount}
+            </p>
+            <Button
+                type="button"
+                style={btn}
+                onClick={() => filter(currentPage + 1)}
+                variant="secondary"
+            >
+                Next
+            </Button>
+            <Button
+                type="button"
+                style={btn}
+                onClick={() => filter(totalPageCount)}
+                variant="secondary"
+            >
+                Last
+            </Button>
+        </Row>
+    )
 }

@@ -25,6 +25,7 @@ export default function CollectionProvider(props: Props) {
     )
     const [totalPageCount, setTotalPageCount] = useState(0)
     const [totalCarsCount, setTotalCarsCount] = useState(0)
+    const [currentPage, setCurrentPage] = useState(1)
 
     async function getCars(params = '') {
         setLoading(true)
@@ -52,20 +53,23 @@ export default function CollectionProvider(props: Props) {
         setManufacturer([DEFAULT_MANUFACTURER, ...manufacturersName])
     }
 
-    function filter(params) {
-        const url = ConstructURL(params)
-        getCars(url)
-    }
-
-    function handleFilter(ev) {
-        ev.preventDefault()
-        filter({
-            manufacturer:
+    function filter(pageNumber) {
+        if (pageNumber <= totalPageCount && pageNumber >= 1) {
+            const manufacturer =
                 selectedManufacturer === DEFAULT_MANUFACTURER
                     ? null
-                    : selectedManufacturer,
-            color: selectedColor === DEFAULT_COLOR ? null : selectedColor,
-        })
+                    : selectedManufacturer
+            const color = selectedColor === DEFAULT_COLOR ? null : selectedColor
+            const page = pageNumber || currentPage
+            const url = ConstructURL({
+                manufacturer,
+                color,
+                page,
+            })
+            getCars(url)
+            // TODO: It would be better to set the page when we recieve the data from server
+            setCurrentPage(page)
+        }
     }
 
     const value = {
@@ -73,6 +77,7 @@ export default function CollectionProvider(props: Props) {
         cars,
         totalPageCount,
         totalCarsCount,
+        currentPage,
         setLoading,
         getCars,
         setTotalPageCount,
@@ -81,7 +86,7 @@ export default function CollectionProvider(props: Props) {
         manufacturers,
         selectColor,
         selectManufacturer,
-        handleFilter,
+        filter,
         getColors,
         getManufacturer,
         selectedColor,
