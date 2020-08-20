@@ -8,7 +8,7 @@ import FirstLetterUpperCase from '../_utils'
 const API_ENDPOINT = 'https://auto1-mock-server.herokuapp.com/api'
 
 const DEFAULT_COLOR = 'All car colors'
-const DEFAULT_MANUFACTURER = 'All car manufacturers'
+const DEFAULT_MANUFACTURER = 'All manufacturers'
 
 type filterType = {
     manufacturer: string,
@@ -17,6 +17,17 @@ type filterType = {
 
 type Props = {
     filter: (params: filterType) => void,
+}
+
+const container = {
+    border: 'solid 1px #ededed',
+    padding: '24px',
+}
+
+const btn = {
+    display: 'flex',
+    justifyContent: 'flex-end',
+    marginTop: '24px',
 }
 
 export default function FiltersContainer(props: Props) {
@@ -60,7 +71,7 @@ export default function FiltersContainer(props: Props) {
     }
 
     return (
-        <Container style={{ border: 'solid 1px #4a4a4a', padding: '24px' }}>
+        <Container style={container}>
             <Row>
                 <Col>
                     <Form style={{ width: '100%' }}>
@@ -77,11 +88,9 @@ export default function FiltersContainer(props: Props) {
                             select={(k) => selectManufacturer(k.target.value)}
                             selected={selectedManufacturer}
                         />
-                        <Row>
-                            <Col sm={{ span: 6, offset: 6 }}>
-                                <Button onClick={handleFilter}>Filter</Button>
-                            </Col>
-                        </Row>
+                        <div style={btn}>
+                            <Button onClick={handleFilter}>Filter</Button>
+                        </div>
                     </Form>
                 </Col>
             </Row>

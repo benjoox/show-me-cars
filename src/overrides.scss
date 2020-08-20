@@ -22,11 +22,6 @@ code {
     padding-right: 24px;
 }
 
-.col {
-    padding-left: 24px;
-    padding-right: 24px;
-}
-
 h1 {
     color: $color-dark-grey;
     font-size: 32px;
@@ -75,9 +70,8 @@ a:hover {
     color: $color-secondary;
 }
 
-.btn-primiary:focus {
-    background-color: $color-primary;
-    outline: 0;
+.btn {
+    border-radius: 2px;
 }
 
 .btn-primary {
@@ -88,12 +82,45 @@ a:hover {
     font-size: 14px;
 }
 
-.btn-primary:hover {
+.btn-primary:active {
     background-color: $color-secondary;
     border-color: $color-secondary;
-    width: 128px;
-    height: 32px;
-    font-size: 14px;
+    outline: 0;
+}
+
+.btn-primary:focus {
+    background-color: $color-primary;
+    border-color: $color-primary;
+    box-shadow: none;
+}
+.btn-primary:not(:disabled):not(.disabled):active {
+    background-color: $color-secondary;
+    border-color: $color-secondary;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active:focus {
+    box-shadow: none;
+}
+
+.btn-primary:not(:disabled):not(.disabled):not(:focus) {
+    background-color: $color-primary;
+    box-shadow: none;
+    border-color: $color-primary;
+}
+.btn-primary:hover {
+    background-color: $color-primary;
+    box-shadow: none;
+    border-color: $color-primary;
+}
+
+.btn-link:focus {
+    outline: 0;
+    text-decoration: none;
+}
+
+.btn-link:hover {
+    text-decoration: underline;
+    color: #d37324;
 }
 
 .btn-secondary {
@@ -114,4 +141,28 @@ a:hover {
     border-radius: 0;
     border-color: $color-light-grey;
     box-sizing: content-box;
+}
+
+.form-group {
+    margin-bottom: 12px;
+}
+
+.form-label {
+    color: $color-dark-grey;
+    display: inherit;
+    margin-bottom: 8px;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.2;
+    color: $color-dark-grey;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid $color-light-grey;
+    border-radius: 3px;
 }
