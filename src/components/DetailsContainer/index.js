@@ -72,7 +72,7 @@ export default function DetailsContainer() {
                         <p style={description}>
                             This car is currently available and can be deliverd
                             as soon as tomorrow morning. Please be aware that
-                            delivery times shown in the page are not deginitive
+                            delivery times shown in the page are not definitive
                             and may change due to bad weather conditions.
                         </p>
                     </Col>
