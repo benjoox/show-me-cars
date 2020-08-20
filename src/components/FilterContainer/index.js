@@ -32,6 +32,7 @@ export default function FiltersContainer() {
     useEffect(() => {
         getColors()
         getManufacturer()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     function handleClick(ev) {

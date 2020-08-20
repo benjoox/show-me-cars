@@ -19,6 +19,7 @@ export default function CollectionContainer() {
 
     useEffect(() => {
         getCars()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     if (!cars || cars.length < 1) return ''
