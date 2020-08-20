@@ -1,23 +1,9 @@
 // @flow
 
-import React, { useState, useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Row, Container, Form, Col, Button } from 'react-bootstrap'
 import Filter from './Filter'
-import FirstLetterUpperCase from '../_utils'
-
-const API_ENDPOINT = 'https://auto1-mock-server.herokuapp.com/api'
-
-const DEFAULT_COLOR = 'All car colors'
-const DEFAULT_MANUFACTURER = 'All manufacturers'
-
-type filterType = {
-    manufacturer: string,
-    color: string,
-}
-
-type Props = {
-    filter: (params: filterType) => void,
-}
+import { CollectionContext } from '../CollectionProvider'
 
 const container = {
     border: 'solid 1px #ededed',
@@ -30,45 +16,23 @@ const btn = {
     marginTop: '24px',
 }
 
-export default function FiltersContainer(props: Props) {
-    const [colors, setColor] = useState([])
-    const [manufacturers, setManufacturer] = useState([])
-    const [selectedColor, selectColor] = useState(DEFAULT_COLOR)
-    const [selectedManufacturer, selectManufacturer] = useState(
-        DEFAULT_MANUFACTURER
-    )
-
-    async function getColors() {
-        const response = await fetch(`${API_ENDPOINT}/colors`)
-        const data = await response.json()
-        const colorNames = data.colors.map((el) => FirstLetterUpperCase(el))
-        setColor([DEFAULT_COLOR, ...colorNames])
-    }
-
-    async function getManufacturer() {
-        const response = await fetch(`${API_ENDPOINT}/manufacturers`)
-        const data = await response.json()
-        const manufacturersName = data.manufacturers.map((man) =>
-            FirstLetterUpperCase(man.name)
-        )
-        setManufacturer([DEFAULT_MANUFACTURER, ...manufacturersName])
-    }
+export default function FiltersContainer() {
+    const {
+        colors,
+        manufacturers,
+        selectColor,
+        selectManufacturer,
+        handleFilter,
+        getColors,
+        getManufacturer,
+        selectedColor,
+        selectedManufacturer,
+    } = useContext(CollectionContext)
 
     useEffect(() => {
         getColors()
         getManufacturer()
     }, [])
-
-    function handleFilter(ev) {
-        ev.preventDefault()
-        props.filter({
-            manufacturer:
-                selectedManufacturer === DEFAULT_MANUFACTURER
-                    ? null
-                    : selectedManufacturer,
-            color: selectedColor === DEFAULT_COLOR ? null : selectedColor,
-        })
-    }
 
     return (
         <Container style={container}>

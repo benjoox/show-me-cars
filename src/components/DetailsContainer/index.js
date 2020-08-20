@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { Container, Row, Col } from 'react-bootstrap'
 import SaveFavBox from './SaveFavBox'
-import FirstLetterUpperCase from '../_utils'
+import { FirstLetterUpperCase } from '../_utils'
 
 const API_ENDPOINT = 'https://auto1-mock-server.herokuapp.com/api/cars'
 

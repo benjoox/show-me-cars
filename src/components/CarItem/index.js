@@ -3,7 +3,7 @@
 import React from 'react'
 import { Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import FirstLetterUpperCase from '../_utils'
+import { FirstLetterUpperCase } from '../_utils'
 
 export type CarItemType = {
     modelName: string,

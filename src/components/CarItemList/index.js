@@ -1,7 +1,8 @@
 // @flow
 
 import React from 'react'
-import CarItem, { CarItemType } from '../CarItem'
+import CarItem from '../CarItem'
+import type { CarItemType } from '../CarItem'
 
 export type CarItemListType = {
     list: CarItemType[],
@@ -13,9 +14,10 @@ const root = {
 
 export default class CarItemList extends React.PureComponent<Props> {
     render() {
+        const { list } = this.props
         return (
             <div style={root}>
-                {this.props.list.map((car: CarItemType) => {
+                {list.map((car: CarItemType) => {
                     const {
                         modelName,
                         stockNumber,
