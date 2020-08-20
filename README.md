@@ -5,12 +5,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 `node > 12.16`
 
 #### Getting started in development mode
+`git clone git@github.com:benjoox/show-me-cars.git`
 
-`git clone git@github.com:benjoox/show-my-cars.git`
+`cd show-me-cars`
 
-`cd show-my-cars`
-
-`yarn install`
+`yarn`
 
 `yarn start`
 
@@ -30,4 +29,5 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 #### Consideration
 This project is using react bootstrap components. According to the provided instructions "\ Use available components only and ignore missmatching of original design"\ I tried to stick to the available components. Hence the select list that is used is the one provided in bootstrap and I did not add the custom design provided. If this is a deal breaker please let me know and I can create the select component seperately. 
 
+Also with the styling of the components, the override.scss does override bootstrap default theming and color palettes. Any custom styling that is specific to an individual component is done as inline styles in the component.
 
